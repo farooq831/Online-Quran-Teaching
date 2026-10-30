@@ -568,7 +568,7 @@ html[lang="en"] .lang-toggle__en, html[lang="ur"] .lang-toggle__ur { opacity: 1;
 .footer__links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: none; background-position: 0 calc(100% - 8px); }
 .footer__links .icon { color: var(--gold-light); }
 .footer__base {
-  width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
+  width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
   padding-top: 22px; border-top: 1px solid rgba(217, 182, 92, .2); font-size: .85rem; color: var(--on-dark-soft);
 }
 .footer__base p { margin: 0; }

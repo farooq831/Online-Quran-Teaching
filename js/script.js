@@ -163,7 +163,6 @@ const translations = {
     fHint: 'Nothing is stored on this website. Your message goes straight to WhatsApp.',
 
     footLine: 'One-to-one Quran classes on Google Meet, for children and adults around the world.',
-    footCare: 'Made with care',
     waAria: 'Chat on WhatsApp',
 
     waGeneric: 'Assalamu alaikum Qari Asif, I would like to book a free trial Quran class.',
@@ -297,7 +296,6 @@ const translations = {
     fHint: 'اس ویب سائٹ پر کچھ محفوظ نہیں ہوتا۔ آپ کا پیغام سیدھا واٹس ایپ پر جاتا ہے۔',
 
     footLine: 'گوگل میٹ پر ون ٹو ون قرآن کلاسز، دنیا بھر کے بچوں اور بڑوں کے لیے۔',
-    footCare: 'محبت اور توجہ سے تیار کردہ',
     waAria: 'واٹس ایپ پر بات کریں',
 
     waGeneric: 'السلام علیکم قاری آصف صاحب، میں مفت ٹرائل قرآن کلاس بُک کرنا چاہتا/چاہتی ہوں۔',
