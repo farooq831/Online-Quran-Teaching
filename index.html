@@ -109,6 +109,12 @@
     <symbol id="i-whatsapp" viewBox="0 0 24 24">
       <path fill="currentColor" d="M12.04 2a9.93 9.93 0 0 0-8.5 15.05L2 22l5.08-1.5A9.94 9.94 0 1 0 12.04 2zm0 18.13a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.02.9.9-2.94-.2-.31a8.2 8.2 0 1 1 6.8 3.68zm4.5-6.14c-.25-.12-1.47-.72-1.7-.8-.22-.09-.39-.13-.55.12-.17.25-.64.8-.78.97-.15.16-.29.18-.54.06a6.7 6.7 0 0 1-1.98-1.22 7.4 7.4 0 0 1-1.37-1.7c-.14-.25 0-.38.11-.5.11-.12.25-.3.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.86 2.04c0 1.2.88 2.37 1 2.53.12.16 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
     </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6.6 3.5h2.8l1.4 4.2-2 1.3a11 11 0 0 0 5.2 5.2l1.3-2 4.2 1.4v2.8a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/>
+    </symbol>
+    <symbol id="i-quote" viewBox="0 0 48 48">
+      <path fill="currentColor" d="M8 36V24.5C8 15.6 12.4 10.3 20 8l1.6 3.4c-4 1.6-6.2 4.6-6.6 8.6H20v16zm20 0V24.5c0-8.9 4.4-14.2 12-16.5l1.6 3.4c-4 1.6-6.2 4.6-6.6 8.6H40v16z"/>
+    </symbol>
     <symbol id="i-mail" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M3.5 6.5h17v11h-17zM3.5 7l8.5 6.5L20.5 7"/>
     </symbol>
@@ -533,6 +539,19 @@
       </div>
     </section>
 
+    <!-- ============ Parent reviews ============ -->
+    <!-- Filled from REVIEWS at the top of js/script.js; stays hidden while that list is empty -->
+    <section class="section reviews pattern-bg" id="reviews" aria-labelledby="reviews-title" hidden>
+      <div class="container">
+        <header class="section-head" data-stagger>
+          <p class="eyebrow reveal" data-i18n="revEyebrow">Parents’ words</p>
+          <h2 class="section-title reveal" id="reviews-title" data-i18n="revTitle">What families say</h2>
+          <div class="divider reveal" aria-hidden="true"><svg><use href="#star8"/></svg></div>
+        </header>
+        <div class="reviews__grid" id="reviews-grid" data-stagger></div>
+      </div>
+    </section>
+
     <!-- ============ 10. FAQ ============ -->
     <section class="section faq pattern-bg" id="faq" aria-labelledby="faq-title">
       <div class="container faq__inner">
@@ -592,6 +611,12 @@
               <a class="contact__item" href="https://wa.me/923345113816" data-wa>
                 <span class="contact__ic"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
                 <span><span class="contact__k">WhatsApp</span><span class="contact__v" dir="ltr">+92 334 5113816</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="contact__item" href="tel:+923345113816">
+                <span class="contact__ic"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+                <span><span class="contact__k" data-i18n="conCall">Call</span><span class="contact__v" dir="ltr">+92 334 5113816</span></span>
               </a>
             </li>
             <li>
@@ -656,6 +681,7 @@
       <p class="footer__line" data-i18n="footLine">One-to-one Quran classes on Google Meet, for children and adults around the world.</p>
       <ul class="footer__links">
         <li><a href="https://wa.me/923345113816" data-wa><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span dir="ltr">+92 334 5113816</span></a></li>
+        <li><a href="tel:+923345113816" aria-label="Call +92 334 5113816" data-i18n-aria="callAria"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="conCall">Call</span></a></li>
         <li><a href="mailto:chasif11111@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>chasif11111@gmail.com</span></a></li>
       </ul>
       <div class="footer__base">
@@ -664,10 +690,15 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp button -->
-  <a class="wa-float" data-wa href="https://wa.me/923345113816" aria-label="Chat on WhatsApp" data-i18n-aria="waAria">
-    <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
-  </a>
+  <!-- Floating call and WhatsApp buttons -->
+  <div class="float-stack">
+    <a class="call-float" href="tel:+923345113816" aria-label="Call +92 334 5113816" data-i18n-aria="callAria">
+      <svg aria-hidden="true"><use href="#i-phone"/></svg>
+    </a>
+    <a class="wa-float" data-wa href="https://wa.me/923345113816" aria-label="Chat on WhatsApp" data-i18n-aria="waAria">
+      <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+    </a>
+  </div>
 
   <script src="js/script.js" defer></script>
 </body>

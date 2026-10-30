@@ -32,6 +32,18 @@ const CONFIG = {
 };
 
 /* ---------------------------------------------------------
+   REVIEWS – real reviews from parents or students only.
+   The "What families say" section stays hidden until this list has at least one entry.
+   `photo` is optional (put the file in assets/images/reviews/); without it, the first letter of the name is shown.
+   Only use a child's photo with the parent's written permission.
+   Example:
+   { name: 'Parent name', place: 'London, UK', lang: 'en', photo: 'assets/images/reviews/name.webp',
+     text: 'Write the review here, about four lines long.' },
+   --------------------------------------------------------- */
+const REVIEWS = [
+];
+
+/* ---------------------------------------------------------
    TRANSLATIONS – every piece of page text, English and Urdu.
    HTML elements point at these with data-i18n="key".
    --------------------------------------------------------- */
@@ -161,6 +173,11 @@ const translations = {
     fErr: 'Please fill in this field.',
     fSubmit: 'Send on WhatsApp',
     fHint: 'Nothing is stored on this website. Your message goes straight to WhatsApp.',
+
+    revEyebrow: 'Parents’ words',
+    revTitle: 'What families say',
+    conCall: 'Call',
+    callAria: 'Call +92 334 5113816',
 
     footLine: 'One-to-one Quran classes on Google Meet, for children and adults around the world.',
     waAria: 'Chat on WhatsApp',
@@ -295,6 +312,11 @@ const translations = {
     fSubmit: 'واٹس ایپ پر بھیجیں',
     fHint: 'اس ویب سائٹ پر کچھ محفوظ نہیں ہوتا۔ آپ کا پیغام سیدھا واٹس ایپ پر جاتا ہے۔',
 
+    revEyebrow: 'والدین کی رائے',
+    revTitle: 'خاندان کیا کہتے ہیں',
+    conCall: 'کال کریں',
+    callAria: 'قاری آصف کو کال کریں',
+
     footLine: 'گوگل میٹ پر ون ٹو ون قرآن کلاسز، دنیا بھر کے بچوں اور بڑوں کے لیے۔',
     waAria: 'واٹس ایپ پر بات کریں',
 
@@ -391,6 +413,38 @@ if ('IntersectionObserver' in window) {
   }, { rootMargin: '-45% 0px -50% 0px' });
   $$('main section[id]').forEach((s) => spy.observe(s));
 }
+
+/* =========================================================
+   Parent reviews (rendered from REVIEWS)
+   ========================================================= */
+(function renderReviews() {
+  const section = $('#reviews');
+  const grid = $('#reviews-grid');
+  if (!section || !REVIEWS.length) return;
+  REVIEWS.forEach((r) => {
+    const fig = document.createElement('figure');
+    fig.className = 'review reveal';
+    fig.innerHTML = '<svg class="review__mark" aria-hidden="true"><use href="#i-quote"/></svg>'
+      + '<blockquote></blockquote><figcaption><span class="review__avatar" aria-hidden="true"></span>'
+      + '<span><span class="review__name"></span><span class="review__place"></span></span></figcaption>';
+    const quote = $('blockquote', fig);
+    quote.textContent = r.text;
+    quote.lang = r.lang || 'en';
+    quote.dir = 'auto';
+    const avatar = $('.review__avatar', fig);
+    if (r.photo) {
+      const img = document.createElement('img');
+      img.src = r.photo; img.alt = ''; img.width = 56; img.height = 56; img.loading = 'lazy'; img.decoding = 'async';
+      avatar.appendChild(img);
+    } else {
+      avatar.textContent = (r.name || '?').trim().charAt(0).toUpperCase();
+    }
+    $('.review__name', fig).textContent = r.name || '';
+    $('.review__place', fig).textContent = r.place || '';
+    grid.appendChild(fig);
+  });
+  section.hidden = false;
+})();
 
 /* =========================================================
    Scroll reveal (staggered) and counter
