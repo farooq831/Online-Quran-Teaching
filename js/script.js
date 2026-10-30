@@ -83,21 +83,13 @@ const translations = {
     aboutT1: 'One-to-one live classes', aboutT2: 'Children and adults', aboutT3: 'Free trial class',
 
     hadithAria: 'Hadith',
-    hadith: '“The best of you are those who learn the Quran and teach it.”',
-    hadithRef: 'Sahih al-Bukhari 5027',
 
     ayatAria: 'Verses from the Holy Quran',
+    kidsDuaLabel: 'A dua for every student',
+    creditArabic: 'Arabic: Tanzil Uthmani text', creditEnglish: 'Quran translation: Sahih International', creditUrdu: 'Urdu translation: Fateh Muhammad Jalandhry',
+    quranSurah: 'Surah',
     ayatEyebrow: 'From the Holy Quran',
     ayPrev: 'Previous verse', ayNext: 'Next verse', ayGo: 'Show verse {n}',
-    kidsDua: 'A dua for every student: “My Lord, increase me in knowledge.” (Ta-Ha 20:114)',
-    ay1Tr: '“And We have certainly made the Qur’an easy for remembrance, so is there any who will remember?”', ay1Ref: 'Surah Al-Qamar 54:17',
-    ay2Tr: '“And recite the Qur’an with measured recitation.”', ay2Ref: 'Surah Al-Muzzammil 73:4',
-    ay3Tr: '“Recite in the name of your Lord who created.”', ay3Ref: 'Surah Al-‘Alaq 96:1',
-    ay4Tr: '“Indeed, it is We who sent down the message, and indeed, We will be its guardian.”', ay4Ref: 'Surah Al-Hijr 15:9',
-    ay5Tr: '“And say, ‘My Lord, increase me in knowledge.’”', ay5Ref: 'Surah Ta-Ha 20:114',
-    ay6Tr: '“Unquestionably, by the remembrance of Allah hearts are assured.”', ay6Ref: 'Surah Ar-Ra‘d 13:28',
-    ay7Tr: '“Indeed, this Qur’an guides to that which is most suitable.”', ay7Ref: 'Surah Al-Isra 17:9',
-    ay8Tr: '“Call upon Me; I will respond to you.”', ay8Ref: 'Surah Ghafir 40:60',
 
     coursesEyebrow: 'Courses',
     coursesTitle: 'A clear path, from the first letter to the whole Quran',
@@ -248,21 +240,13 @@ const translations = {
     aboutT1: 'ون ٹو ون براہِ راست کلاسز', aboutT2: 'بچے اور بڑے', aboutT3: 'مفت ٹرائل کلاس',
 
     hadithAria: 'حدیث',
-    hadith: '”تم میں سب سے بہتر وہ ہے جو قرآن سیکھے اور سکھائے۔“',
-    hadithRef: 'صحیح بخاری 5027',
 
     ayatAria: 'قرآنِ مجید کی آیات',
+    kidsDuaLabel: 'ہر طالب علم کی دعا',
+    creditArabic: 'عربی متن: تنزیل (عثمانی رسم الخط)', creditEnglish: 'انگریزی ترجمہ: صحیح انٹرنیشنل', creditUrdu: 'اردو ترجمہ: فتح محمد جالندھری',
+    quranSurah: 'سورۃ',
     ayatEyebrow: 'قرآنِ مجید سے',
     ayPrev: 'پچھلی آیت', ayNext: 'اگلی آیت', ayGo: 'آیت {n} دکھائیں',
-    kidsDua: 'ہر طالب علم کی دعا: ”اے میرے پروردگار! مجھے اور زیادہ علم دے۔“ (سورۃ طٰہٰ 20:114)',
-    ay1Tr: '”اور ہم نے قرآن کو سمجھنے کے لیے آسان کر دیا ہے، تو کوئی ہے کہ سوچے سمجھے؟“', ay1Ref: 'سورۃ القمر 54:17',
-    ay2Tr: '”اور قرآن کو ٹھہر ٹھہر کر پڑھا کرو۔“', ay2Ref: 'سورۃ المزمل 73:4',
-    ay3Tr: '”اپنے پروردگار کا نام لے کر پڑھو جس نے پیدا کیا۔“', ay3Ref: 'سورۃ العلق 96:1',
-    ay4Tr: '”بے شک یہ نصیحت (قرآن) ہم ہی نے اتاری ہے اور ہم ہی اس کے نگہبان ہیں۔“', ay4Ref: 'سورۃ الحجر 15:9',
-    ay5Tr: '”اور دعا کرو کہ اے میرے پروردگار! مجھے اور زیادہ علم دے۔“', ay5Ref: 'سورۃ طٰہٰ 20:114',
-    ay6Tr: '”سن رکھو! اللہ کی یاد سے دل آرام پاتے ہیں۔“', ay6Ref: 'سورۃ الرعد 13:28',
-    ay7Tr: '”بے شک یہ قرآن وہ راستہ دکھاتا ہے جو سب سے سیدھا ہے۔“', ay7Ref: 'سورۃ الاسراء 17:9',
-    ay8Tr: '”مجھ سے دعا کرو، میں تمہاری دعا قبول کروں گا۔“', ay8Ref: 'سورۃ غافر 40:60',
 
     coursesEyebrow: 'کورسز',
     coursesTitle: 'پہلے حرف سے مکمل قرآن تک، ایک واضح راستہ',
@@ -414,6 +398,7 @@ function applyLanguage(next) {
   updateMenuLabel();
   updateWhatsAppLinks();
   updateAyatLabels();
+  renderQuran();
   renderTimings();
   storage.set('lang', lang);
 }
@@ -426,6 +411,45 @@ function updateWhatsAppLinks() {
     a.href = waUrl(course ? t('waCourse').replace('{course}', course) : t('waGeneric'));
     a.target = '_blank';
     a.rel = 'noopener';
+  });
+}
+
+/* =========================================================
+   Quran and hadith text — read only from assets/quran-data.js
+   ========================================================= */
+function quranRef(item) {
+  if (item.type === 'hadith') return lang === 'ur' ? item.refUr : item.refEn;
+  const name = lang === 'ur' ? item.surahAr : item.surahEn;
+  return `${t('quranSurah')} ${name} ${item.surah}:${item.ayah}`;
+}
+
+// The honorific sign ﷺ is drawn very tall in Nastaliq; show it smaller in the Quran font (text unchanged)
+function setTranslation(el, text) {
+  el.textContent = '';
+  text.split(/(ﷺ)/).forEach((part) => {
+    if (part === 'ﷺ') {
+      const span = document.createElement('span');
+      span.className = 'honorific';
+      span.textContent = part;
+      el.appendChild(span);
+    } else if (part) {
+      el.appendChild(document.createTextNode(part));
+    }
+  });
+}
+
+function renderQuran() {
+  const data = window.QURAN_DATA;
+  if (!data) return;
+  $$('[data-q]').forEach((el) => {
+    const item = data.items[el.dataset.q];
+    if (!item) return;
+    const ar = $('[data-q-ar]', el);
+    const tr = $('[data-q-tr]', el);
+    const ref = $('[data-q-ref]', el);
+    if (ar) ar.textContent = item.ar;
+    if (tr) { setTranslation(tr, lang === 'ur' ? item.ur : item.en); tr.lang = lang; }
+    if (ref) ref.textContent = quranRef(item);
   });
 }
 
