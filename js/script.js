@@ -86,7 +86,6 @@ const translations = {
 
     ayatAria: 'Verses from the Holy Quran',
     kidsDuaLabel: 'A dua for every student',
-    creditArabic: 'Arabic: Tanzil Uthmani text', creditEnglish: 'Quran translation: Sahih International', creditUrdu: 'Urdu translation: Fateh Muhammad Jalandhry',
     quranSurah: 'Surah',
     ayatEyebrow: 'From the Holy Quran',
     ayPrev: 'Previous verse', ayNext: 'Next verse', ayGo: 'Show verse {n}',
@@ -243,7 +242,6 @@ const translations = {
 
     ayatAria: 'قرآنِ مجید کی آیات',
     kidsDuaLabel: 'ہر طالب علم کی دعا',
-    creditArabic: 'عربی متن: تنزیل (عثمانی رسم الخط)', creditEnglish: 'انگریزی ترجمہ: صحیح انٹرنیشنل', creditUrdu: 'اردو ترجمہ: فتح محمد جالندھری',
     quranSurah: 'سورۃ',
     ayatEyebrow: 'قرآنِ مجید سے',
     ayPrev: 'پچھلی آیت', ayNext: 'اگلی آیت', ayGo: 'آیت {n} دکھائیں',
