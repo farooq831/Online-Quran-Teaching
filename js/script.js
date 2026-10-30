@@ -118,7 +118,6 @@ const translations = {
     timLead: 'We worked out your time zone automatically. You can also choose another one below.',
     timYourZone: 'Your time zone',
     timChoose: 'Show times for',
-    timNote: 'These are sample hours. Please confirm exact times on WhatsApp.',
     timPk: '{time} in Pakistan',
     timNextDay: 'next day', timPrevDay: 'previous day',
     daysMonSat: 'Monday to Saturday',
@@ -133,8 +132,6 @@ const translations = {
     feesText: 'Fees depend on the course and how many classes you would like each week. Send a message and you will get a clear answer, with no obligation.',
     feesWa: 'Ask on WhatsApp', feesMail: 'Email us',
 
-    revEyebrow: 'Parents’ words',
-    revTitle: 'What families say',
 
     faqEyebrow: 'Questions',
     faqTitle: 'Frequently asked questions',
@@ -255,7 +252,6 @@ const translations = {
     timLead: 'ہم نے آپ کا ٹائم زون خود معلوم کر لیا ہے۔ آپ نیچے کوئی اور ٹائم زون بھی منتخب کر سکتے ہیں۔',
     timYourZone: 'آپ کا ٹائم زون',
     timChoose: 'اوقات دکھائیں برائے',
-    timNote: 'یہ نمونے کے اوقات ہیں۔ براہِ کرم درست وقت واٹس ایپ پر طے کریں۔',
     timPk: 'پاکستان میں {time}',
     timNextDay: 'اگلے دن', timPrevDay: 'پچھلے دن',
     daysMonSat: 'پیر تا ہفتہ',
@@ -270,8 +266,6 @@ const translations = {
     feesText: 'فیس کورس اور ہفتہ وار کلاسز کی تعداد پر منحصر ہے۔ پیغام بھیجیں، آپ کو بغیر کسی پابندی کے واضح جواب ملے گا۔',
     feesWa: 'واٹس ایپ پر پوچھیں', feesMail: 'ای میل کریں',
 
-    revEyebrow: 'والدین کی رائے',
-    revTitle: 'خاندان کیا کہتے ہیں',
 
     faqEyebrow: 'سوالات',
     faqTitle: 'اکثر پوچھے جانے والے سوالات',

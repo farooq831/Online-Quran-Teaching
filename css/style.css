@@ -482,7 +482,6 @@ html[lang="en"] .lang-toggle__en, html[lang="ur"] .lang-toggle__ur { opacity: 1;
 .slot__time { font-family: var(--font-head); font-size: 1.45rem; font-weight: 700; color: var(--emerald); line-height: 1.2; }
 [dir="rtl"] .slot__time { text-align: right; }
 .slot__meta { grid-column: 2; font-size: .84rem; color: var(--ink-soft); }
-.tz__note { margin: 16px 0 0; font-size: .88rem; color: var(--ink-soft); }
 
 /* ---------- 9. Fees ---------- */
 .fees { background: var(--ivory-deep); padding-top: 0; }
@@ -496,16 +495,6 @@ html[lang="en"] .lang-toggle__en, html[lang="ur"] .lang-toggle__ur { opacity: 1;
 .fees__card p { color: var(--on-dark-soft); max-width: 52ch; margin-inline: auto; }
 .fees__star { position: absolute; width: 340px; height: 340px; left: 50%; top: 50%; margin: -170px 0 0 -170px; fill: none; stroke: var(--gold-light); stroke-width: .6; opacity: .14; animation: spin 80s linear infinite; }
 .fees__actions { position: relative; display: flex; flex-direction: column; gap: 12px; margin-top: 26px; align-items: stretch; }
-
-/* ---------- Reviews ---------- */
-.reviews { background: var(--ivory); }
-.reviews__grid { display: grid; gap: 20px; }
-.review {
-  margin: 0; padding: 30px 24px; border-radius: var(--radius); background: #fffdf7;
-  border: 2px dashed rgba(201, 162, 75, .6); color: var(--ink-soft); text-align: center;
-}
-.review p { font-family: var(--font-head); font-size: 1.3rem; font-style: italic; color: var(--emerald); }
-.review footer { font-size: .85rem; }
 
 /* ---------- 10. FAQ ---------- */
 .faq { background: var(--ivory-deep); }
@@ -606,7 +595,7 @@ html[lang="en"] .lang-toggle__en, html[lang="ur"] .lang-toggle__ur { opacity: 1;
 html[lang="ur"] body { font-family: var(--font-ur); line-height: 2.2; }
 html[lang="ur"] h1, html[lang="ur"] h2, html[lang="ur"] h3,
 html[lang="ur"] .hero__lead, html[lang="ur"] .brand__name, html[lang="ur"] .interlude__tr,
-html[lang="ur"] .kids__adults, html[lang="ur"] .review p, html[lang="ur"] .marquee__list li,
+html[lang="ur"] .kids__adults, html[lang="ur"] .marquee__list li,
 html[lang="ur"] .acc h3, html[lang="ur"] .about__caption {
   font-family: var(--font-ur); font-style: normal; line-height: 1.9; letter-spacing: 0;
 }
@@ -642,7 +631,7 @@ html[lang="ur"] .slot__time { font-family: var(--font-body); font-size: 1.15rem;
 
 @media (min-width: 640px) {
   :root { --gutter: 28px; }
-  .cards, .kids__grid, .reviews__grid { grid-template-columns: repeat(2, 1fr); }
+  .cards, .kids__grid { grid-template-columns: repeat(2, 1fr); }
   .kids__grid > :last-child { grid-column: 1 / -1; max-width: calc(50% - 10px); justify-self: center; }
   .trust__inner { grid-template-columns: auto 1fr; gap: 32px; }
   .tz { padding: 34px; }
@@ -674,7 +663,6 @@ html[lang="ur"] .slot__time { font-family: var(--font-body); font-size: 1.15rem;
   .cards { grid-template-columns: repeat(3, 1fr); gap: 26px; }
   .kids__grid { grid-template-columns: repeat(3, 1fr); gap: 26px; }
   .kids__grid > :last-child { grid-column: auto; max-width: none; }
-  .reviews__grid { grid-template-columns: repeat(3, 1fr); }
   .how__grid { grid-template-columns: 1fr 1fr; gap: 72px; }
   .world__grid { grid-template-columns: .8fr 1.2fr; gap: 80px; }
   .contact__grid { grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: center; }
