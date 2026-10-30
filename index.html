@@ -564,15 +564,28 @@
             </picture>
             <figcaption data-i18n="galCap1">The teaching desk, where every live class happens</figcaption>
           </figure>
-          <div class="gallery__tile gallery__tile--meet reveal">
-            <svg viewBox="0 0 120 80" aria-hidden="true">
-              <rect x="4" y="6" width="112" height="68" rx="8"/>
-              <rect x="12" y="14" width="60" height="44" rx="4"/>
-              <rect x="78" y="14" width="30" height="20" rx="3"/>
-              <circle cx="42" cy="30" r="7"/><path d="M30 52c2-8 7-11 12-11s10 3 12 11"/>
-              <circle cx="93" cy="22" r="3.5"/><path d="M86 32c1-3 4-5 7-5s6 2 7 5"/>
-              <circle cx="52" cy="66" r="3"/><circle cx="62" cy="66" r="3"/><circle cx="72" cy="66" r="3"/>
-            </svg>
+          <div class="gallery__tile gallery__tile--live reveal">
+            <div class="live" aria-hidden="true">
+              <div class="live__bar">
+                <span class="live__badge"><span class="live__dot"></span><span data-i18n="liveBadge">LIVE</span></span>
+                <span class="live__app">Google Meet</span>
+              </div>
+              <div class="live__stage">
+                <p class="live__ayah" lang="ar" dir="rtl">اقْرَأْ بِاسْمِ رَبِّكَ</p>
+                <span class="live__wave"><i></i><i></i><i></i><i></i><i></i></span>
+                <span class="live__pip">
+                  <picture>
+                    <source type="image/webp" srcset="assets/images/qari-asif-portrait-480.webp">
+                    <img src="assets/images/qari-asif-portrait-480.jpg" width="480" height="480" loading="lazy" decoding="async" alt="">
+                  </picture>
+                </span>
+              </div>
+              <div class="live__controls">
+                <span class="live__btn"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span>
+                <span class="live__btn"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2"/><path d="M15 11l6-3.5v9L15 13"/></svg></span>
+                <span class="live__btn live__btn--end"><svg viewBox="0 0 24 24"><path d="M3 14.5c5-4.7 13-4.7 18 0l-2.3 2.3-3.2-1.6v-2.4a10 10 0 0 0-7 0v2.4l-3.2 1.6z"/></svg></span>
+              </div>
+            </div>
             <p data-i18n="galCap2">Live one-to-one on Google Meet</p>
           </div>
           <figure class="gallery__tile gallery__tile--photo reveal">

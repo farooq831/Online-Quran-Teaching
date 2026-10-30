@@ -132,6 +132,7 @@ const translations = {
     altSetup: 'Qari M. Asif’s online teaching setup with two laptops',
     galCap1: 'The teaching desk, where every live class happens',
     galCap2: 'Live one-to-one on Google Meet',
+    liveBadge: 'LIVE',
     galCap3: 'Learning from home, on any device',
 
     whyEyebrow: 'Why families choose Qari Asif',
@@ -296,6 +297,7 @@ const translations = {
     altSetup: 'قاری ایم آصف کا آن لائن تدریسی سیٹ اپ، دو لیپ ٹاپ کے ساتھ',
     galCap1: 'تدریس کی میز، جہاں ہر براہِ راست کلاس ہوتی ہے',
     galCap2: 'گوگل میٹ پر براہِ راست ون ٹو ون',
+    liveBadge: 'لائیو',
     galCap3: 'گھر بیٹھے، کسی بھی ڈیوائس پر سیکھنا',
 
     whyEyebrow: 'خاندان قاری آصف کو کیوں چنتے ہیں',
