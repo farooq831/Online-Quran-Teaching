@@ -86,6 +86,19 @@ const translations = {
     hadith: '“The best of you are those who learn the Quran and teach it.”',
     hadithRef: 'Sahih al-Bukhari 5027',
 
+    ayatAria: 'Verses from the Holy Quran',
+    ayatEyebrow: 'From the Holy Quran',
+    ayPrev: 'Previous verse', ayNext: 'Next verse', ayGo: 'Show verse {n}',
+    kidsDua: 'A dua for every student: “My Lord, increase me in knowledge.” (Ta-Ha 20:114)',
+    ay1Tr: '“And We have certainly made the Qur’an easy for remembrance, so is there any who will remember?”', ay1Ref: 'Surah Al-Qamar 54:17',
+    ay2Tr: '“And recite the Qur’an with measured recitation.”', ay2Ref: 'Surah Al-Muzzammil 73:4',
+    ay3Tr: '“Recite in the name of your Lord who created.”', ay3Ref: 'Surah Al-‘Alaq 96:1',
+    ay4Tr: '“Indeed, it is We who sent down the message, and indeed, We will be its guardian.”', ay4Ref: 'Surah Al-Hijr 15:9',
+    ay5Tr: '“And say, ‘My Lord, increase me in knowledge.’”', ay5Ref: 'Surah Ta-Ha 20:114',
+    ay6Tr: '“Unquestionably, by the remembrance of Allah hearts are assured.”', ay6Ref: 'Surah Ar-Ra‘d 13:28',
+    ay7Tr: '“Indeed, this Qur’an guides to that which is most suitable.”', ay7Ref: 'Surah Al-Isra 17:9',
+    ay8Tr: '“Call upon Me; I will respond to you.”', ay8Ref: 'Surah Ghafir 40:60',
+
     coursesEyebrow: 'Courses',
     coursesTitle: 'A clear path, from the first letter to the whole Quran',
     c1Title: 'Noorani Qaida',
@@ -237,6 +250,19 @@ const translations = {
     hadith: '”تم میں سب سے بہتر وہ ہے جو قرآن سیکھے اور سکھائے۔“',
     hadithRef: 'صحیح بخاری 5027',
 
+    ayatAria: 'قرآنِ مجید کی آیات',
+    ayatEyebrow: 'قرآنِ مجید سے',
+    ayPrev: 'پچھلی آیت', ayNext: 'اگلی آیت', ayGo: 'آیت {n} دکھائیں',
+    kidsDua: 'ہر طالب علم کی دعا: ”اے میرے پروردگار! مجھے اور زیادہ علم دے۔“ (سورۃ طٰہٰ 20:114)',
+    ay1Tr: '”اور ہم نے قرآن کو سمجھنے کے لیے آسان کر دیا ہے، تو کوئی ہے کہ سوچے سمجھے؟“', ay1Ref: 'سورۃ القمر 54:17',
+    ay2Tr: '”اور قرآن کو ٹھہر ٹھہر کر پڑھا کرو۔“', ay2Ref: 'سورۃ المزمل 73:4',
+    ay3Tr: '”اپنے پروردگار کا نام لے کر پڑھو جس نے پیدا کیا۔“', ay3Ref: 'سورۃ العلق 96:1',
+    ay4Tr: '”بے شک یہ نصیحت (قرآن) ہم ہی نے اتاری ہے اور ہم ہی اس کے نگہبان ہیں۔“', ay4Ref: 'سورۃ الحجر 15:9',
+    ay5Tr: '”اور دعا کرو کہ اے میرے پروردگار! مجھے اور زیادہ علم دے۔“', ay5Ref: 'سورۃ طٰہٰ 20:114',
+    ay6Tr: '”سن رکھو! اللہ کی یاد سے دل آرام پاتے ہیں۔“', ay6Ref: 'سورۃ الرعد 13:28',
+    ay7Tr: '”بے شک یہ قرآن وہ راستہ دکھاتا ہے جو سب سے سیدھا ہے۔“', ay7Ref: 'سورۃ الاسراء 17:9',
+    ay8Tr: '”مجھ سے دعا کرو، میں تمہاری دعا قبول کروں گا۔“', ay8Ref: 'سورۃ غافر 40:60',
+
     coursesEyebrow: 'کورسز',
     coursesTitle: 'پہلے حرف سے مکمل قرآن تک، ایک واضح راستہ',
     c1Title: 'نورانی قاعدہ',
@@ -385,6 +411,7 @@ function applyLanguage(next) {
 
   updateMenuLabel();
   updateWhatsAppLinks();
+  updateAyatLabels();
   renderTimings();
   storage.set('lang', lang);
 }
@@ -423,9 +450,18 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && header.classList.contains('is-open')) { setMenu(false); navToggle.focus(); }
 });
 
-const onScrollHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+const progressBar = $('.scroll-progress');
+let headerTicking = false;
+const onScrollHeader = () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  header.classList.toggle('is-scrolled', window.scrollY > 24);
+  progressBar.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
+  headerTicking = false;
+};
 onScrollHeader();
-window.addEventListener('scroll', onScrollHeader, { passive: true });
+window.addEventListener('scroll', () => {
+  if (!headerTicking) { requestAnimationFrame(onScrollHeader); headerTicking = true; }
+}, { passive: true });
 
 if ('IntersectionObserver' in window) {
   const links = new Map($$('.nav__links a').map((a) => [a.getAttribute('href').slice(1), a]));
@@ -497,9 +533,18 @@ if ('IntersectionObserver' in window && !reduceMotion) {
   const revealer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      $$('[data-count]', entry.target).forEach(countUp);
-      obs.unobserve(entry.target);
+      const el = entry.target;
+      el.classList.add('is-visible');
+      $$('[data-count]', el).forEach(countUp);
+      obs.unobserve(el);
+      // Once shown, drop the reveal classes so hover effects use their own fast transitions
+      const done = (e) => {
+        if (e.target !== el || e.propertyName !== 'opacity') return;
+        el.removeEventListener('transitionend', done);
+        el.classList.remove('reveal', 'is-visible');
+        el.style.removeProperty('--d');
+      };
+      el.addEventListener('transitionend', done);
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   $$('.reveal').forEach((el) => revealer.observe(el));
@@ -521,6 +566,72 @@ if (parallaxEl && !reduceMotion) {
   window.addEventListener('scroll', () => {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
+}
+
+/* =========================================================
+   Verse carousel (autoplay pauses on hover/focus; off for reduced motion)
+   ========================================================= */
+const ayat = $('#ayat');
+const ayahSlides = ayat ? $$('.ayah', ayat) : [];
+const ayahDots = [];
+let ayahIndex = 0;
+let ayahTimer = null;
+
+function showAyah(i) {
+  ayahIndex = (i + ayahSlides.length) % ayahSlides.length;
+  ayahSlides.forEach((slide, n) => {
+    const active = n === ayahIndex;
+    slide.classList.toggle('is-active', active);
+    if (active) slide.removeAttribute('aria-hidden'); else slide.setAttribute('aria-hidden', 'true');
+  });
+  ayahDots.forEach((dot, n) => dot.setAttribute('aria-current', String(n === ayahIndex)));
+}
+
+function updateAyatLabels() {
+  ayahDots.forEach((dot, n) => dot.setAttribute('aria-label', t('ayGo').replace('{n}', n + 1)));
+  ayahSlides.forEach((slide, n) => slide.setAttribute('aria-label', `${n + 1} / ${ayahSlides.length}`));
+}
+
+const stopAyat = () => { clearInterval(ayahTimer); ayahTimer = null; };
+const startAyat = () => {
+  if (reduceMotion || ayahTimer) return;
+  ayahTimer = setInterval(() => showAyah(ayahIndex + 1), 7000);
+};
+
+if (ayat) {
+  const dotsWrap = $('.ayat__dots', ayat);
+  ayahSlides.forEach((_, n) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'ayat__dot';
+    dot.addEventListener('click', () => { showAyah(n); stopAyat(); startAyat(); });
+    dotsWrap.appendChild(dot);
+    ayahDots.push(dot);
+  });
+  $$('.ayat__arrow', ayat).forEach((btn) => btn.addEventListener('click', () => {
+    showAyah(ayahIndex + Number(btn.dataset.dir)); stopAyat(); startAyat();
+  }));
+
+  // Swipe on touch screens
+  let startX = null;
+  const slidesBox = $('.ayat__slides', ayat);
+  slidesBox.addEventListener('pointerdown', (e) => { startX = e.clientX; });
+  slidesBox.addEventListener('pointerup', (e) => {
+    if (startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    if (Math.abs(dx) < 40) return;
+    const forward = document.documentElement.dir === 'rtl' ? dx > 0 : dx < 0;
+    showAyah(ayahIndex + (forward ? 1 : -1)); stopAyat(); startAyat();
+  });
+
+  ayat.addEventListener('mouseenter', stopAyat);
+  ayat.addEventListener('mouseleave', startAyat);
+  ayat.addEventListener('focusin', stopAyat);
+  ayat.addEventListener('focusout', startAyat);
+  document.addEventListener('visibilitychange', () => (document.hidden ? stopAyat() : startAyat()));
+  showAyah(0);
+  startAyat();
 }
 
 /* =========================================================

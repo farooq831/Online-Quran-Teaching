@@ -161,6 +161,7 @@
         </button>
       </div>
     </nav>
+    <div class="scroll-progress" aria-hidden="true"></div>
   </header>
 
   <main id="main">
@@ -324,7 +325,7 @@
     </section>
 
     <!-- ============ Verse interlude ============ -->
-    <aside class="interlude" aria-label="Hadith" data-i18n-aria="hadithAria">
+    <section class="interlude" aria-roledescription="carousel" aria-label="Verses from the Holy Quran" data-i18n-aria="ayatAria">
       <div class="interlude__bg" aria-hidden="true">
             <picture>
               <source type="image/webp" srcset="assets/images/quran-mosque-window-900.webp 900w, assets/images/quran-mosque-window-1600.webp 1600w" sizes="100vw">
@@ -332,11 +333,68 @@
             </picture>
       </div>
       <div class="container interlude__inner reveal">
-        <p class="interlude__ar" lang="ar" dir="rtl">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
-        <p class="interlude__tr" data-i18n="hadith">“The best of you are those who learn the Quran and teach it.”</p>
-        <p class="interlude__ref" data-i18n="hadithRef">Sahih al-Bukhari 5027</p>
+        <svg class="interlude__star" aria-hidden="true"><use href="#star8"/></svg>
+        <p class="eyebrow eyebrow--light" data-i18n="ayatEyebrow">From the Holy Quran</p>
+        <div class="ayat" id="ayat">
+          <div class="ayat__slides">
+          <figure class="ayah is-active" role="group" aria-roledescription="slide">
+            <p class="ayah__ar" lang="ar" dir="rtl">وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ</p>
+            <figcaption>
+              <span class="ayah__tr" data-i18n="ay1Tr">“And We have certainly made the Qur’an easy for remembrance, so is there any who will remember?”</span>
+              <span class="ayah__ref" data-i18n="ay1Ref">Surah Al-Qamar 54:17</span>
+            </figcaption>
+          </figure>
+          <figure class="ayah" role="group" aria-roledescription="slide" aria-hidden="true">
+            <p class="ayah__ar" lang="ar" dir="rtl">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</p>
+            <figcaption>
+              <span class="ayah__tr" data-i18n="ay2Tr">“And recite the Qur’an with measured recitation.”</span>
+              <span class="ayah__ref" data-i18n="ay2Ref">Surah Al-Muzzammil 73:4</span>
+            </figcaption>
+          </figure>
+          <figure class="ayah" role="group" aria-roledescription="slide" aria-hidden="true">
+            <p class="ayah__ar" lang="ar" dir="rtl">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</p>
+            <figcaption>
+              <span class="ayah__tr" data-i18n="ay3Tr">“Recite in the name of your Lord who created.”</span>
+              <span class="ayah__ref" data-i18n="ay3Ref">Surah Al-‘Alaq 96:1</span>
+            </figcaption>
+          </figure>
+          <figure class="ayah" role="group" aria-roledescription="slide" aria-hidden="true">
+            <p class="ayah__ar" lang="ar" dir="rtl">إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ</p>
+            <figcaption>
+              <span class="ayah__tr" data-i18n="ay4Tr">“Indeed, it is We who sent down the message, and indeed, We will be its guardian.”</span>
+              <span class="ayah__ref" data-i18n="ay4Ref">Surah Al-Hijr 15:9</span>
+            </figcaption>
+          </figure>
+          <figure class="ayah" role="group" aria-roledescription="slide" aria-hidden="true">
+            <p class="ayah__ar" lang="ar" dir="rtl">وَقُل رَّبِّ زِدْنِي عِلْمًا</p>
+            <figcaption>
+              <span class="ayah__tr" data-i18n="ay5Tr">“And say, ‘My Lord, increase me in knowledge.’”</span>
+              <span class="ayah__ref" data-i18n="ay5Ref">Surah Ta-Ha 20:114</span>
+            </figcaption>
+          </figure>
+          <figure class="ayah" role="group" aria-roledescription="slide" aria-hidden="true">
+            <p class="ayah__ar" lang="ar" dir="rtl">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</p>
+            <figcaption>
+              <span class="ayah__tr" data-i18n="ay6Tr">“Unquestionably, by the remembrance of Allah hearts are assured.”</span>
+              <span class="ayah__ref" data-i18n="ay6Ref">Surah Ar-Ra‘d 13:28</span>
+            </figcaption>
+          </figure>
+          <figure class="ayah" role="group" aria-roledescription="slide" aria-hidden="true">
+            <p class="ayah__ar" lang="ar" dir="rtl">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
+            <figcaption>
+              <span class="ayah__tr" data-i18n="hadith">“The best of you are those who learn the Quran and teach it.”</span>
+              <span class="ayah__ref" data-i18n="hadithRef">Sahih al-Bukhari 5027</span>
+            </figcaption>
+          </figure>
+          </div>
+          <div class="ayat__nav">
+            <button class="ayat__arrow" type="button" data-dir="-1" aria-label="Previous verse" data-i18n-aria="ayPrev"><svg class="icon" aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+            <div class="ayat__dots"></div>
+            <button class="ayat__arrow" type="button" data-dir="1" aria-label="Next verse" data-i18n-aria="ayNext"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
       </div>
-    </aside>
+    </section>
 
     <!-- ============ 4. Courses ============ -->
     <section class="section courses" id="courses" aria-labelledby="courses-title">
@@ -354,6 +412,7 @@
             </span>
             <h3 class="card__title" data-i18n="c1Title">Noorani Qaida</h3>
             <p data-i18n="c1Text">The perfect start. Learn the Arabic letters, their sounds and how they join, step by step.</p>
+            <p class="card__ayah"><span class="card__ayah-ar" lang="ar" dir="rtl">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</span><span class="card__ayah-ref" data-i18n="ay3Ref">Surah Al-‘Alaq 96:1</span></p>
             <a class="card__link" data-wa data-course="Noorani Qaida" href="https://wa.me/923345113816"><span data-i18n="bookTrial">Book trial</span><svg class="icon icon--flip" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </article>
 
@@ -363,6 +422,7 @@
             </span>
             <h3 class="card__title" data-i18n="c2Title">Nazra (Quran reading)</h3>
             <p data-i18n="c2Text">Read the Quran fluently and correctly, looking at the text, with steady guidance in every class.</p>
+            <p class="card__ayah"><span class="card__ayah-ar" lang="ar" dir="rtl">وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ</span><span class="card__ayah-ref" data-i18n="ay1Ref">Surah Al-Qamar 54:17</span></p>
             <a class="card__link" data-wa data-course="Nazra" href="https://wa.me/923345113816"><span data-i18n="bookTrial">Book trial</span><svg class="icon icon--flip" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </article>
 
@@ -372,6 +432,7 @@
             </span>
             <h3 class="card__title" data-i18n="c3Title">Tajweed</h3>
             <p data-i18n="c3Text">Recite beautifully with the correct rules of pronunciation, makharij and flow.</p>
+            <p class="card__ayah"><span class="card__ayah-ar" lang="ar" dir="rtl">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</span><span class="card__ayah-ref" data-i18n="ay2Ref">Surah Al-Muzzammil 73:4</span></p>
             <a class="card__link" data-wa data-course="Tajweed" href="https://wa.me/923345113816"><span data-i18n="bookTrial">Book trial</span><svg class="icon icon--flip" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </article>
 
@@ -381,6 +442,7 @@
             </span>
             <h3 class="card__title" data-i18n="c4Title">Hifz and revision</h3>
             <p data-i18n="c4Text">Memorise the Quran with a steady plan, and keep what you have learned strong with regular revision.</p>
+            <p class="card__ayah"><span class="card__ayah-ar" lang="ar" dir="rtl">إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ</span><span class="card__ayah-ref" data-i18n="ay4Ref">Surah Al-Hijr 15:9</span></p>
             <a class="card__link" data-wa data-course="Hifz" href="https://wa.me/923345113816"><span data-i18n="bookTrial">Book trial</span><svg class="icon icon--flip" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </article>
 
@@ -390,6 +452,7 @@
             </span>
             <h3 class="card__title" data-i18n="c5Title">Daily duas and salah</h3>
             <p data-i18n="c5Text">Learn everyday duas and the basics of salah, with correct words and clear meaning.</p>
+            <p class="card__ayah"><span class="card__ayah-ar" lang="ar" dir="rtl">ادْعُونِي أَسْتَجِبْ لَكُمْ</span><span class="card__ayah-ref" data-i18n="ay8Ref">Surah Ghafir 40:60</span></p>
             <a class="card__link" data-wa data-course="Duas and Salah" href="https://wa.me/923345113816"><span data-i18n="bookTrial">Book trial</span><svg class="icon icon--flip" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </article>
 
@@ -421,6 +484,7 @@
           <p class="eyebrow reveal" data-i18n="kidsEyebrow">For children</p>
           <h2 class="section-title reveal" id="kids-title" data-i18n="kidsTitle">Special classes for little learners</h2>
           <div class="divider reveal" aria-hidden="true"><svg><use href="#star8"/></svg></div>
+          <p class="kids__dua reveal"><span class="kids__dua-ar" lang="ar" dir="rtl">رَّبِّ زِدْنِي عِلْمًا</span><span data-i18n="kidsDua">A dua for every student: “My Lord, increase me in knowledge.” (Ta-Ha 20:114)</span></p>
           <p class="section-lead reveal" data-i18n="kidsLead">Children learn best when they feel happy and confident. Every class is gentle, encouraging and made to fit their age.</p>
         </header>
 
@@ -750,6 +814,10 @@
         <li><a href="tel:+923345113816" aria-label="Call +92 334 5113816" data-i18n-aria="callAria"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="conCall">Call</span></a></li>
         <li><a href="mailto:chasif11111@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>chasif11111@gmail.com</span></a></li>
       </ul>
+      <figure class="footer__ayah">
+        <p class="footer__ayah-ar" lang="ar" dir="rtl">إِنَّ هَٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ</p>
+        <figcaption><span data-i18n="ay7Tr">“Indeed, this Qur’an guides to that which is most suitable.”</span> <span class="footer__ayah-ref" data-i18n="ay7Ref">Surah Al-Isra 17:9</span></figcaption>
+      </figure>
       <div class="footer__base">
         <p>© <span id="year">2026</span> Qari M. Asif</p>
       </div>
