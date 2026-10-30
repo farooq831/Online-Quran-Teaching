@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# TODO: replace USERNAME and REPO-NAME with your GitHub details
-Sitemap: https://USERNAME.github.io/REPO-NAME/sitemap.xml
+Sitemap: https://farooq831.github.io/Online-Quran-Teaching/sitemap.xml
